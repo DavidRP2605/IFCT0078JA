@@ -1,0 +1,76 @@
+/* Generic labels style rules */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	font: 1em Arial, 'Courier New', monospace;
+	color: #5c5252;
+}
+
+header {
+	background-color: grey;
+	margin: 0;
+	padding: 20px;
+}
+
+/* Common style rules */
+.horizontal-nav {
+	/*  */
+}
+
+.lnk-header-nav {}
+
+.hor-header-nav {
+	background-color: grey;
+}
+
+.hor-footer-nav {
+	background-color: #0c0c0c;
+}
+
+.bold-text {
+	font-weight: bold;
+}
+
+.italic-text {
+	font-style: italic;
+}
+
+/* Specific style rules */
+#main-nav {
+	display: block;
+	width: 100%;
+}
+
+#main-nav .active,
+#main-nav span.active {
+	color: white;
+	font: 1.25em 'Courier New', Courier, monospace;
+	font-weight: bold;
+}
+
+#main-nav a {
+	color: aquamarine;
+	text-decoration: none;
+	font: 1.25em 'Courier New', Courier, monospace;
+}
+
+#main-nav a:hover {
+	font-weight: bold;
+}
+
+#main-nav #company-logo{
+	color: yellow;
+}
+#main-nav .main-nav-icons{
+	color: aquamarine;
+}
+
+.imagen
+{
+	height: 2em;
+	width: 2em;
+}
