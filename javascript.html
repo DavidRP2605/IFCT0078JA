@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+  <head>
+    <title>Javascript</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Variables
+      const IVA_GENERAL = 0.21;
+      const IVA_REDUCIDO = 0.1;
+      const IVA_SUPERREDUCIDO = 0.05;
+      const IVAS = [0, 5, 21];
+
+      var precioProducto = 800;
+
+      // Comprobación del precio del producto
+      console.log("El precio del producto sin IVA es de " + precioProducto + " euros");
+
+      if (precioProducto > 1000) {
+        console.error("¡Error! El importe final real supera los 1000 €.");
+      } else if (precioProducto > 700) {
+        console.log("El producto es caro, se aplica IVA general.");
+        let ivaAplicable = IVAS[2]; // 21%
+        let importe_final = precioProducto + (precioProducto * ivaAplicable / 100);
+        console.log("El importe final con un 21% de IVA será de " + importe_final + " euros" );
+      } else if (precioProducto > 500) {
+        console.log("El producto es de precio medio, se aplica IVA reducido.");
+        let ivaAplicable = IVAS[1]; // 10%
+        let importe_final = precioProducto + (precioProducto * ivaAplicable / 100);
+        console.log("El importe final con un 10% de IVA será de " + importe_final + " euros");
+      } else {
+        console.log("El producto es barato, se aplica IVA superreducido.");
+        let ivaAplicable = IVAS[0]; // 5%
+        let importe_final = precioProducto + (precioProducto * ivaAplicable / 100);
+        console.log( "El importe final con un 5% de IVA será de " + importe_final + " euros");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
