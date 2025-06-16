@@ -120,6 +120,7 @@ ape_type_list.forEach((item) => {
 
 console.log("\r\n");
 console.log("\r\n");
+console.log("\r\n");
 for (let i = 0; i < products.length; i++) {
 	console.log(`Dentro del bucle FOR: Iteración num. ${i}, Producto "${products[i]}"`);
 }
