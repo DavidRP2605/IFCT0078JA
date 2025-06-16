@@ -9,6 +9,8 @@
       //Pedir al usuario que introduzca un número
       let numero = prompt("Introduce un número:");
 
+      numero = Number(numero);
+      
       //Comprobamos que sea un número
       while (isNaN(numero) || numero === null) {
         alert("Por favor, introduce un número válido.");
