@@ -1,9 +1,28 @@
 // JavaScript
 
-CelsiusAFahrenheit = (pCel) => (pCel * 9) / 5 + 32;
-FahrenheitACelsius = (pFah) => ((pFah - 32) * 5) / 9;
+const CelsiusAFahrenheit = (pCel) => (pCel * 9) / 5 + 32;
+const FahrenheitACelsius = (pFah) => ((pFah - 32) * 5) / 9;
 
+// Validación de número
 const isValidNumber = (value) => !isNaN(value) && typeof value === "number";
+
+// Funcion para mostrar mensajes
+function showMessage(type, message) {
+  switch (type) {
+    case "alert":
+      alert(message);
+      break;
+    case "error":
+      console.error(message);
+      alert(message);
+      break;
+    case "log":
+    default:
+      console.log(message);
+      alert(message);
+      break;
+  }
+}
 
 let userMeasure = prompt(
   "Para convertir Centígrados a Fahrenheit, ingrese <F>" +
@@ -12,51 +31,41 @@ let userMeasure = prompt(
 );
 
 if ("C" !== userMeasure && "F" !== userMeasure) {
-    let unableMessage = `La Unidad de los grados introducida <${userMeasure}> por el usuario no son válidos.` +
-      "\r\n" +
-      "Por favor," +
-      "\r\n" +
-      "  - ingrese <C> para convertir a grados Centígrados" +
-      "\r\n" +
-      "  - ingrese <F> para convertir a grados Fahrenheit"
-  alert(unableMessage);
-//   console.error(unableMessage);
+  // Creamos un mensaje si no son válidos los grados
+  let unableMessage =
+    `La Unidad de los grados introducida <${userMeasure}> por el usuario no son válidos.` +
+    "\r\n" +
+    "Por favor," +
+    "\r\n" +
+    "  - ingrese <C> para convertir a grados Centígrados" +
+    "\r\n" +
+    "  - ingrese <F> para convertir a grados Fahrenheit";
+  showMessage("error", unableMessage);
 } else {
   let userDegree = prompt(
     `Ingrese los grados ${
       userMeasure === "F" ? "Centígrados" : "Fahrenheit"
     } a convertir`
   );
+
   let initDegree = Number(userDegree);
-  let mistakeMessage = "";
 
   if (!!!isValidNumber(initDegree)) {
-    mistakeMessage = `Los grados introducidos <${initDegree}>º por el usuario no son válidos.` +
-        `Por favor, ingrese un dato numérico.`
-    alert(mistakeMessage);
-    console.error(mistakeMessage);
+    let mistakeMessage =
+      `Los grados introducidos <${initDegree}>º por el usuario no son válidos.` +
+      `Por favor, ingrese un dato numérico.`;
+    showMessage("error", mistakeMessage);
   } else {
     let convertedDegree;
-    let message = "";
 
     if (userMeasure === "C") {
       convertedDegree = FahrenheitACelsius(initDegree);
-      message = `${userDegree} grados Fahrenheit son ${convertedDegree.toFixed(1)} Centígrados`;
-      console.log(message);
-      alert(message);
+      let message = `${userDegree} grados Fahrenheit son ${convertedDegree.toFixed(1)} Centígrados`;
+      showMessage("log", message);
     } else {
       convertedDegree = CelsiusAFahrenheit(initDegree);
-      message = ` ${userDegree} grados Centígrados son ${convertedDegree.toFixed(1)} Fahrenheit`;
-      console.log(message);
-      alert(message);
+      let message = ` ${userDegree} grados Centígrados son ${convertedDegree.toFixed(1)} Fahrenheit`;
+      showMessage("log", message);
     }
-
-    // if(isValidNumber(convertedDegree)) {
-    //   console.log(message);
-    //   alert(message);
-    // }else {
-    //   alert(mistakeMessage);
-    //   console.error(mistakeMessage);
-    // }
   }
 }
