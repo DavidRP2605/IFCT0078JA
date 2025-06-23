@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios DOM</title>
+    <style>
+      .destacado {
+        background-color: yellow;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+        border: 1px solid red;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Manipulando el DOM</h1>
+    </header>
+
+
+    <main>
+      <section id="seccionParrafos">
+        <h2>La sección de los párrafos</h2>
+        <p id="parrafoPrincipal">Este es un párrafo de ejemplo.</p>
+        <p id="parrafoSecundario">El contador va por:</p>
+      </section>
+      <section id="seccionBotones">
+        <h2>La sección de los botones</h2>
+        <button id="botonCambiarTexto">Cambiar Texto del Párrafo</button>
+        <button id="botonAgregarElemento">Agregar Elemento a Lista</button>
+        <button id="botonCambiarEstilo">Cambiar Estilo</button>
+      </section>
+      <section id="seccionListas">
+        <h2>La sección de las listas</h2>
+        <ul id="miLista">
+          <li>Elemento inicial 1</li>
+          <li>Elemento inicial 2</li>
+        </ul>
+      </section>
+      <section id="seccionImagenes">
+        <h2>La sección de las imágenes</h2>
+        <div id="contenedorImagen">
+            <!-- Aquí se agregará una imagen -->
+          </div>
+      </section>
+      <section id="seccionFormulario">
+        <h2>La sección del Formulario</h2>
+        <form id="elFormulario" action="./">
+          <input type="text" id="campoInput" placeholder="Escribe algo..." />
+          <input type="text" id="campoNombre" name="nombre" />
+          <input type="text" id="campoEdad" name="edad" placeholder="Introduce tu edad" />
+          <p id="mensajeInput"></p>
+      </section>
+    </main>
+
+
+    <script src="./src/assets/js/custom.v2.1.0.js"></script>
+    <!-- Enlaza tu archivo JavaScript -->
+  </body>
+</html>
