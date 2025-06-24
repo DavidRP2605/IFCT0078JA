@@ -24,4 +24,4 @@ function agregarElemento() {
 }
 
 //Al hacer click, se ejecuta la función
-botonAgregarElemento.onclick = agregarElemento
+botonAgregarElemento.onclick = agregarElemento;
