@@ -21,7 +21,6 @@
       <h1>Manipulando el DOM</h1>
     </header>
 
-
     <main>
       <section id="seccionParrafos">
         <h2>La sección de los párrafos</h2>
@@ -44,19 +43,26 @@
       <section id="seccionImagenes">
         <h2>La sección de las imágenes</h2>
         <div id="contenedorImagen">
-            <!-- Aquí se agregará una imagen -->
-          </div>
+          <!-- Aquí se agregará una imagen -->
+        </div>
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="./">
+        <form id="elFormulario" action="#" method="get" >
           <input type="text" id="campoInput" placeholder="Escribe algo..." />
-          <input type="text" id="campoNombre" name="nombre" />
-          <input type="text" id="campoEdad" name="edad" placeholder="Introduce tu edad" />
+          <input type="text" id="campoNombre" name="nombre" required />
+          <input type="text" id="campoEmail" name="email" />
+          <p id="campoFecha">
+            Fecha nacimiento:
+            <select name="dia" id="diaNacimiento"></select>
+            <select name="mes" id="mesNacimiento"></select>
+            <select name="anio" id="anioNacimiento"></select>
+          </p>
           <p id="mensajeInput"></p>
+          <button id="botonGuardar" type="submit">Guardar</button>
+        </form>
       </section>
     </main>
-
 
     <!-- <script src="./src/assets/js/custom.v2.1.0.js"></script> 
     <script src="./src/assets/js/custom.v2.2.0.js"></script> 
@@ -65,8 +71,9 @@
     <script src="./src/assets/js/custom.v2.5.0.js"></script>
     <script src="./src/assets/js/custom.v2.6.0.js"></script>
     <script src="./src/assets/js/custom.v2.7.0.js"></script>
-    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
     <script src="./src/assets/js/custom.v2.8.0.js"></script>
+    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
+    <script src="./src/assets/js/custom.v2.9.0.js"></script>
     <!-- Enlaza tu archivo JavaScript -->
   </body>
 </html>
