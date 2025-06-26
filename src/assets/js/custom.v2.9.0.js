@@ -26,6 +26,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
   inputNombre.placeholder = "Escribe tu nombre";
   inputEmail.placeholder = "Escribe tu correo electrónico";
 
+  //Creamos un parrafo donde indicaremos si es valido o no es valido el nombre
+  const parrafoNombre = document.createElement("p");
+
+  const parrafoEmail = document.createElement("p");
+
   function comprobarNombre() {
     //Creamos la funcion para comprobar que es un nombre
     const expNombre = /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'°. ]+$/g;
@@ -59,8 +64,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   inputNombre.addEventListener("keyup", function () {
     comprobarNombre();
   });
-  //Creamos un parrafo donde indicaremos si es valido o no es valido el nombre
-  const parrafoNombre = document.createElement("p");
 
   inputNombre.insertAdjacentElement("afterend", parrafoNombre);
 
@@ -73,8 +76,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   });
 
-  //Evento para cuando escribimos el email
-  inputEmail.addEventListener("keyup", function () {
+  function comprobarEmail() {
     //Expresión regular del email
     const expEmail =
       /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -94,16 +96,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       parrafoEmail.style.color = "green";
     }
-  });
+  }
 
-  const parrafoEmail = document.createElement("p");
+  //Evento para cuando escribimos el email
+  inputEmail.addEventListener("keyup", function () {
+    comprobarEmail();
+  });
 
   inputEmail.insertAdjacentElement("afterend", parrafoEmail);
 
   //Hacemos un blur para que cuando cambiemos el foco de ese input, se quite el mensaje
   inputEmail.addEventListener("blur", function () {
-    parrafoEmail.textContent = "";
+    if (parrafoEmail.textContent === "Email válido") {
+      parrafoEmail.textContent = "";
+    } else {
+      inputEmail.insertAdjacentElement("afterend", parrafoEmail);
+    }
   });
+
 
   // Llenar los selects con días, meses y años
   function llenarSelects() {
