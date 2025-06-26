@@ -26,10 +26,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
   inputNombre.placeholder = "Escribe tu nombre";
   inputEmail.placeholder = "Escribe tu correo electrónico";
 
-  //Evento para cuando escribimos el nombre
-  inputNombre.addEventListener("keyup", function () {
+  function comprobarNombre() {
     //Creamos la funcion para comprobar que es un nombre
-    const expNombre = /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$/g;
+    const expNombre = /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'°. ]+$/g;
 
     //Comprobarmos que sea correcto
     const esNumero = expNombre.test(inputNombre.value);
@@ -54,6 +53,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       parrafoNombre.style.color = "green";
     }
+  }
+
+  //Evento para cuando escribimos el nombre
+  inputNombre.addEventListener("keyup", function () {
+    comprobarNombre();
   });
   //Creamos un parrafo donde indicaremos si es valido o no es valido el nombre
   const parrafoNombre = document.createElement("p");
@@ -62,7 +66,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   //Hacemos un blur para que cuando cambiemos el foco de ese input, se quite el mensaje
   inputNombre.addEventListener("blur", function () {
-    parrafoNombre.textContent = "";
+    if (parrafoNombre.textContent === "Nombre válido") {
+      parrafoNombre.textContent = "";
+    } else {
+      inputNombre.insertAdjacentElement("afterend", parrafoNombre);
+    }
   });
 
   //Evento para cuando escribimos el email
