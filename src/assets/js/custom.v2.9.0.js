@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
   inputNombre.placeholder = "Escribe tu nombre";
   inputEmail.placeholder = "Escribe tu correo electrónico";
 
+  botonGuardar.disabled = false;
+
   //Creamos un parrafo donde indicaremos si es valido o no es valido el nombre
   const parrafoNombre = document.createElement("p");
 
@@ -51,12 +53,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
     ) {
       parrafoNombre.textContent = "Nombre no válido";
       parrafoNombre.style.color = "red";
+      botonGuardar.disabled = true;
     }
     //Si todo esta bien, nos indica que es valido
     else {
       parrafoNombre.textContent = "Nombre válido";
 
       parrafoNombre.style.color = "green";
+      botonGuardar.disabled = false;
     }
   }
 
@@ -89,12 +93,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //Comprobamos que el email sea correcto y que no este vacío
     if (!esEmail || inputEmail.value == emailVacio) {
       parrafoEmail.textContent = "Email no válido";
-
       parrafoEmail.style.color = "red";
+      botonGuardar.disabled = true;
     } else {
       parrafoEmail.textContent = "Email válido";
 
       parrafoEmail.style.color = "green";
+      botonGuardar.disabled = false;
     }
   }
 
@@ -113,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
       inputEmail.insertAdjacentElement("afterend", parrafoEmail);
     }
   });
-
 
   // Llenar los selects con días, meses y años
   function llenarSelects() {
