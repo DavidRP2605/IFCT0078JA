@@ -38,21 +38,80 @@
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="#" method="get">
-          <!-- <input type="text" id="campoInput" placeholder="Escribe algo..." /> -->
+        <form
+          id="elFormulario"
+          action="#"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <label for="campoNombre">Nombre</label>
-          <input type="text" id="campoNombre" name="nombre" />
-          <label for="campoEmail">Email</label>
-          <input type="text" id="campoEmail" name="email" />
+          <input
+            type="text"
+            id="campoNombre"
+            name="nombre"
+            placeholder="Escribe tu nombre"
+          /><br /><br />
+
+          <label for="campoSurnames">Apellidos</label>
+          <input
+            type="text"
+            id="campoSurnames"
+            name="apellidos"
+            placeholder="Escribe tus apellidos"
+          /><br /><br />
+
           <label for="campoFecha">Fecha de nacimiento</label>
-          <div id="campoFecha">
-            <select name="dia" id="diaNacimiento"></select>
-            <select name="mes" id="mesNacimiento">
-              <option value="1">Enero</option>
-            </select>
-            <select name="anio" id="anioNacimiento"></select>
-          </div>
-          <p id="mensajeInput"></p>
+          <input
+            type="date"
+            id="campoFecha"
+            name="fecha"
+            placeholder="Indica tu fecha de cumpleaños"
+          /><br /><br />
+
+          <label for="campoEmail">Correo electrónico</label>
+          <input
+            type="text"
+            id="campoEmail"
+            name="email"
+            placeholder="Escribe tu correo electrónico"
+          /><br /><br />
+
+          <label for="campoProvincia">Provincia</label>
+          <select name="provincia" id="campoProvincia">
+            <option value="almeria">Almería</option>
+            <option value="cadiz">Cádiz</option>
+            <option value="cordoba">Córdoba</option>
+            <option value="granada">Granada</option>
+            <option value="huelva">Huelva</option>
+            <option value="jaen">Jaén</option>
+            <option value="malaga">Málaga</option>
+            <option value="sevilla">Sevilla</option>
+          </select><br><br>
+
+          <label for="campoGenero">Género: 
+            <input type="radio" id="generoHombre" name="genero" value="hombre" /> Hombre
+            <input type="radio" id="generoMujer" name="genero" value="mujer" /> Mujer
+            <input type="radio" id="generoOtros" name="genero" value="otros" /> Otros
+          </label><br><br>
+
+          <label for="campoTecnologia">Tecnología de programación:</label>
+          <select name="tecnologia" id="campoTecnologia">
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="csharp">C#</option>
+            <option value="php">PHP</option>
+            <option value="ruby">Ruby</option>
+            <option value="go">Go</option>
+            <option value="typescript">TypeScript</option>
+          </select><br><br>
+
+          <label for="campoExperiencia">Años de experiencia:</label>
+          <input type="number" id="campoExperiencia" name="experiencia" min="0" step="1" placeholder="Ej: 3"> <br><br>
+
+          <label for="campoCV">Añadir CV (Formato PDF):</label>
+          <input type="file" id="campoCV" name="cv" accept="application/pdf"><br><br>
+
           <button id="botonGuardar" type="submit">Guardar</button>
         </form>
       </section>
@@ -66,8 +125,9 @@
     <script src="./src/assets/js/custom.v2.6.0.js"></script>
     <script src="./src/assets/js/custom.v2.7.0.js"></script>
     <script src="./src/assets/js/custom.v2.8.0.js"></script>
-    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
     <script src="./src/assets/js/custom.v2.9.0.js"></script>
+    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
+    <script src="./src/assets/js/custom.v2.9.1.js"></script>
     <!-- Enlaza tu archivo JavaScript -->
   </body>
 </html>
