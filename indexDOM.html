@@ -4,23 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejercicios DOM</title>
-    <style>
-      .destacado {
-        background-color: yellow;
-        font-weight: bold;
-      }
-      .error {
-        color: red;
-        border: 1px solid red;
-        padding: 5px;
-      }
-    </style>
+    <link href="./src/assets/styles/custom.v2.0.css" rel="stylesheet" />
   </head>
   <body>
     <header>
       <h1>Manipulando el DOM</h1>
     </header>
-
 
     <main>
       <section id="seccionParrafos">
@@ -44,19 +33,30 @@
       <section id="seccionImagenes">
         <h2>La sección de las imágenes</h2>
         <div id="contenedorImagen">
-            <!-- Aquí se agregará una imagen -->
-          </div>
+          <!-- Aquí se agregará una imagen -->
+        </div>
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="./">
-          <input type="text" id="campoInput" placeholder="Escribe algo..." />
+        <form id="elFormulario" action="#" method="get">
+          <!-- <input type="text" id="campoInput" placeholder="Escribe algo..." /> -->
+          <label for="campoNombre">Nombre</label>
           <input type="text" id="campoNombre" name="nombre" />
-          <input type="text" id="campoEdad" name="edad" placeholder="Introduce tu edad" />
+          <label for="campoEmail">Email</label>
+          <input type="text" id="campoEmail" name="email" />
+          <label for="campoFecha">Fecha de nacimiento</label>
+          <div id="campoFecha">
+            <select name="dia" id="diaNacimiento"></select>
+            <select name="mes" id="mesNacimiento">
+              <option value="1">Enero</option>
+            </select>
+            <select name="anio" id="anioNacimiento"></select>
+          </div>
           <p id="mensajeInput"></p>
+          <button id="botonGuardar" type="submit">Guardar</button>
+        </form>
       </section>
     </main>
-
 
     <!-- <script src="./src/assets/js/custom.v2.1.0.js"></script> 
     <script src="./src/assets/js/custom.v2.2.0.js"></script> 
@@ -65,8 +65,9 @@
     <script src="./src/assets/js/custom.v2.5.0.js"></script>
     <script src="./src/assets/js/custom.v2.6.0.js"></script>
     <script src="./src/assets/js/custom.v2.7.0.js"></script>
-    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
     <script src="./src/assets/js/custom.v2.8.0.js"></script>
+    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
+    <script src="./src/assets/js/custom.v2.9.0.js"></script>
     <!-- Enlaza tu archivo JavaScript -->
   </body>
 </html>
