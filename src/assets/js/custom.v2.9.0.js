@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", (event) => {
   let inputNacimiento = document.getElementById("campoFecha");
   let inputNombre = document.getElementById("campoNombre");
   let inputEmail = document.getElementById("campoEmail");
@@ -35,10 +35,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function comprobarNombre() {
     //Creamos la funcion para comprobar que es un nombre
-    const expNombre = /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'°. ]+$/g;
 
     //Comprobarmos que sea correcto
-    const esNumero = expNombre.test(inputNombre.value);
     //Guardamos el largo del nombre para comprobarlo
     const largoNombre = inputNombre.value.length;
     //Guardamos la variable por si el nombre está vacío
@@ -48,8 +46,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (
       largoNombre > 80 ||
       largoNombre < 4 ||
-      inputNombre.value === nombreVacio ||
-      !esNumero
+      inputNombre.value === nombreVacio 
     ) {
       parrafoNombre.textContent = "Nombre no válido";
       parrafoNombre.style.color = "red";
@@ -57,28 +54,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
     //Si todo esta bien, nos indica que es valido
     else {
-      parrafoNombre.textContent = "Nombre válido";
-
-      parrafoNombre.style.color = "green";
-      botonGuardar.disabled = false;
+      parrafoNombre.textContent = "";
     }
   }
 
   //Evento para cuando escribimos el nombre
-  inputNombre.addEventListener("keyup", function () {
-    comprobarNombre();
-  });
+  inputNombre.addEventListener("keyup", comprobarNombre);
 
   inputNombre.insertAdjacentElement("afterend", parrafoNombre);
 
   //Hacemos un blur para que cuando cambiemos el foco de ese input, se quite el mensaje
-  inputNombre.addEventListener("blur", function () {
-    if (parrafoNombre.textContent === "Nombre válido") {
-      parrafoNombre.textContent = "";
-    } else {
-      inputNombre.insertAdjacentElement("afterend", parrafoNombre);
-    }
-  });
+  inputNombre.addEventListener("blur", comprobarNombre);
 
   function comprobarEmail() {
     //Expresión regular del email
@@ -96,28 +82,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
       parrafoEmail.style.color = "red";
       botonGuardar.disabled = true;
     } else {
-      parrafoEmail.textContent = "Email válido";
-
-      parrafoEmail.style.color = "green";
-      botonGuardar.disabled = false;
+      parrafoEmail.textContent = "";
     }
   }
 
   //Evento para cuando escribimos el email
-  inputEmail.addEventListener("keyup", function () {
-    comprobarEmail();
-  });
+  inputEmail.addEventListener("keyup", comprobarEmail);
 
   inputEmail.insertAdjacentElement("afterend", parrafoEmail);
 
   //Hacemos un blur para que cuando cambiemos el foco de ese input, se quite el mensaje
-  inputEmail.addEventListener("blur", function () {
-    if (parrafoEmail.textContent === "Email válido") {
-      parrafoEmail.textContent = "";
-    } else {
-      inputEmail.insertAdjacentElement("afterend", parrafoEmail);
-    }
-  });
+  inputEmail.addEventListener("blur", comprobarEmail);
 
   // Llenar los selects con días, meses y años
   function llenarSelects() {
@@ -153,8 +128,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     return edad;
   }
 
-  // Validar fecha y edad
-  formulario.addEventListener("submit", function (event) {
+  function comprobarEdad() {
     const dia = parseInt(diaSelect.value);
     const mes = parseInt(mesSelect.value);
     const anio = parseInt(anioSelect.value);
@@ -184,5 +158,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     } else {
       mensaje.textContent = ""; // Borra mensaje anterior si es válido
     }
+
+    if (inputNombre.value.trim() === "" || inputEmail.value.trim() === "") {
+      event.preventDefault(); // evita el envío si algo está mal
+      mensaje.textContent =
+        "Por favor, rellena todos los campos correctamente.";
+      mensaje.style.color = "red";
+    } else {
+      mensaje.textContent = ""; // limpia el mensaje si todo está bien
+    }
+  }
+
+  [diaSelect, mesSelect, anioSelect].forEach((select) => {
+    select.addEventListener("blur", comprobarEdad);
+  });
+
+  // Validar nombre y email
+  formulario.addEventListener("submit", (event) => {
+    comprobarNombre();
+    comprobarEmail();
+    comprobarEdad();
   });
 });

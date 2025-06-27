@@ -4,17 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ejercicios DOM</title>
-    <style>
-      .destacado {
-        background-color: yellow;
-        font-weight: bold;
-      }
-      .error {
-        color: red;
-        border: 1px solid red;
-        padding: 5px;
-      }
-    </style>
+    <link href="./src/assets/styles/custom.v2.0.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -48,16 +38,20 @@
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="#" method="get" >
-          <input type="text" id="campoInput" placeholder="Escribe algo..." />
-          <input type="text" id="campoNombre" name="nombre" required />
+        <form id="elFormulario" action="#" method="get">
+          <!-- <input type="text" id="campoInput" placeholder="Escribe algo..." /> -->
+          <label for="campoNombre">Nombre</label>
+          <input type="text" id="campoNombre" name="nombre" />
+          <label for="campoEmail">Email</label>
           <input type="text" id="campoEmail" name="email" />
-          <p id="campoFecha">
-            Fecha nacimiento:
+          <label for="campoFecha">Fecha de nacimiento</label>
+          <div id="campoFecha">
             <select name="dia" id="diaNacimiento"></select>
-            <select name="mes" id="mesNacimiento"></select>
+            <select name="mes" id="mesNacimiento">
+              <option value="1">Enero</option>
+            </select>
             <select name="anio" id="anioNacimiento"></select>
-          </p>
+          </div>
           <p id="mensajeInput"></p>
           <button id="botonGuardar" type="submit">Guardar</button>
         </form>
