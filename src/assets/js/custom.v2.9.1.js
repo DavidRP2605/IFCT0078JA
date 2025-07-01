@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function validarFechaNacimiento() {
     let parrafoError = document.getElementById("errorFecha");
-    // const valor = inputNacimiento.value;
+    let br1 = document.getElementById("brFecha1");
 
     const dia = parseInt(inputNacimiento.value.split("-")[2]);
     const mes = parseInt(inputNacimiento.value.split("-")[1]);
@@ -117,21 +117,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const edad = calcularEdad(dia, mes, anio);
 
-    if (edad < 18) {
-      parrafoError = document.createElement("p");
-      parrafoError.id = "errorFecha";
-      parrafoError.textContent = "Debes tener al menos 18 años.";
-      parrafoError.style.color = "red";
-      inputNacimiento.parentNode.insertBefore(
-        parrafoError,
-        inputNacimiento.nextSibling
-      );
-      return false;
+    if (!edad || edad < 18) {
+      if (!parrafoError) {
+        parrafoError = document.createElement("p");
+        parrafoError.id = "errorFecha";
+        parrafoError.textContent = "Edad inválida";
+        parrafoError.style.color = "red";
+        inputNacimiento.parentNode.insertBefore(
+          parrafoError,
+          inputNacimiento.nextSibling
+        );
+      }
+
+      // Eliminar uno de los <br> cuando la edad es inválida
+      if (br1) {
+        br1.remove();
+      }
     } else {
+      // Eliminar el mensaje de error si es válido
       if (parrafoError) {
         parrafoError.remove();
       }
-      return true;
+
+      // Volver a añadir el <br> cuando la edad es válida
+      if (!br1) {
+        const nuevoBr = document.createElement("br");
+        nuevoBr.id = "brFecha1";
+        inputNacimiento.parentNode.insertBefore(
+          nuevoBr,
+          inputNacimiento.nextSibling
+        );
+      }
     }
   }
 
@@ -267,7 +283,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   //Hacemos un addEventListener al campo experiencia para que valide al escribir
-  inputExperiencia.addEventListener("input", validarExperiencia);
+  inputExperiencia.addEventListener("input", () => {
+    validarExperiencia();
+    validarFormularioCompleto();
+  });
 
   function validarFormularioCompleto() {
     const esNombreValido = validarNombre();
@@ -292,6 +311,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     botonGuardar.disabled = !todoCorrecto;
   }
-
-  setInterval(validarFormularioCompleto, 500);
 });
