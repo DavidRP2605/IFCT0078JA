@@ -325,9 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  checkPolitica.addEventListener("change", () => {
-    validarCheckboxes();
-  });
+  checkPolitica.addEventListener("change", validarCheckboxes);
 
   checkCondiciones.addEventListener("change", () => {
     validarCheckboxes();
@@ -342,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const esProvinciaValida = validarProvincia();
     const esTecnologiaValida = validarTecnologias();
     const esExperienciaValida = validarExperiencia();
-    const esCVValido = validarCV(); // Simple: solo que haya algo cargado
+    const esCVValido = validarCV();
     const esCheckboxesValido = validarCheckboxes();
 
     // Habilitar solo si todo es correcto

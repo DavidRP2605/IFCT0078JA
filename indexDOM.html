@@ -38,7 +38,12 @@
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="#">
+        <form
+          id="elFormulario"
+          action="#"
+          method="get"
+          enctype="multipart/form-data"
+        >
           <label for="campoNombre">Nombre: </label>
           <input
             type="text"
@@ -138,18 +143,30 @@
           <br id="brExperiencia" /><br />
 
           <label for="campoCV">Añadir CV (Formato PDF):</label>
-          <input type="file" id="campoCV" name="cv" accept="application/pdf"  />
+          <input type="file" id="campoCV" name="cv" accept="application/pdf" />
           <br id="brCv" /><br />
 
           <div>
             <input type="checkbox" id="checkPolitica" name="politica" />
-            <label for="checkPolitica"
-              >He leído y acepto la Política de Privacidad</label
+            <label for="checkPolitica">
+              <a
+                href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal"
+                target="_blank"
+                rel="noopener noreferrer"
+                >He leído y acepto la Política de Privacidad</a
+              ></label
             ><br />
 
             <input type="checkbox" id="checkCondiciones" name="condiciones" />
-            <label for="checkCondiciones" id="labelCondiciones">Acepto las Condiciones de Uso</label
-            ><br />
+            <label for="checkCondiciones" id="labelCondiciones"
+              ><a
+                href="https://es.wikipedia.org/wiki/T%C3%A9rminos_y_condiciones_de_uso"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Acepto las Condiciones de Uso</a
+              ></label
+            >
+            <br />
           </div>
           <br id="brCheckbox" />
 
