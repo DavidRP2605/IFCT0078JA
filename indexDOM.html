@@ -41,32 +41,28 @@
         <form
           id="elFormulario"
           action="#"
-          method="post"
-          enctype="multipart/form-data"
+
         >
-          <label for="campoNombre">Nombre</label>
+          <label for="campoNombre">Nombre: </label>
           <input
             type="text"
             id="campoNombre"
             name="nombre"
             placeholder="Escribe tu nombre"
-          /><br /><br />
+          /><br id="brNombre" /><br />
 
-          <label for="campoSurnames">Apellidos</label>
+          <label for="campoApellidos">Apellidos: </label>
           <input
             type="text"
-            id="campoSurnames"
+            id="campoApellidos"
             name="apellidos"
             placeholder="Escribe tus apellidos"
-          /><br /><br />
+          /><br id="brApellidos" /><br />
 
-          <label for="campoFecha">Fecha de nacimiento</label>
-          <input
-            type="date"
-            id="campoFecha"
-            name="fecha"
-            placeholder="Indica tu fecha de cumpleaños"
-          /><br /><br />
+          <label for="campoFecha">Fecha de nacimiento: </label>
+          <input type="date" id="campoFecha" name="fecha" /><br
+            id="brFecha"
+          /><br />
 
           <label for="campoEmail">Correo electrónico</label>
           <input
@@ -74,10 +70,11 @@
             id="campoEmail"
             name="email"
             placeholder="Escribe tu correo electrónico"
-          /><br /><br />
+          /><br id="brEmail" /><br />
 
-          <label for="campoProvincia">Provincia</label>
+          <label for="campoProvincia">Provincia: </label>
           <select name="provincia" id="campoProvincia">
+            <option value="selecciona">Selecciona una opcion</option>
             <option value="almeria">Almería</option>
             <option value="cadiz">Cádiz</option>
             <option value="cordoba">Córdoba</option>
@@ -85,32 +82,64 @@
             <option value="huelva">Huelva</option>
             <option value="jaen">Jaén</option>
             <option value="malaga">Málaga</option>
-            <option value="sevilla">Sevilla</option>
-          </select><br><br>
+            <option value="sevilla">Sevilla</option></select
+          ><br id="brProvincia" /><br />
 
-          <label for="campoGenero">Género: 
-            <input type="radio" id="generoHombre" name="genero" value="hombre" /> Hombre
-            <input type="radio" id="generoMujer" name="genero" value="mujer" /> Mujer
-            <input type="radio" id="generoOtros" name="genero" value="otros" /> Otros
-          </label><br><br>
+          <label for="campoGenero"
+            >Género:
+            <input
+              type="radio"
+              id="generoHombre"
+              name="genero"
+              value="hombre"
+              checked
+            />
+            Hombre
+            <input type="radio" id="generoMujer" name="genero" value="mujer" />
+            Mujer
+            <input type="radio" id="generoOtros" name="genero" value="otros" />
+            Otros
+            <input type="radio" id="generoNC" name="genero" value="noContestar" />
+            Prefiero no contestar
+          </label>
+          <br id="brGenero" /><br />
 
-          <label for="campoTecnologia">Tecnología de programación:</label>
-          <select name="tecnologia" id="campoTecnologia">
-            <option value="javascript">JavaScript</option>
-            <option value="python">Python</option>
-            <option value="java">Java</option>
-            <option value="csharp">C#</option>
-            <option value="php">PHP</option>
-            <option value="ruby">Ruby</option>
-            <option value="go">Go</option>
-            <option value="typescript">TypeScript</option>
-          </select><br><br>
+          <label for="campoTecnologias">Selecciona tecnologías:</label><br />
+          <select id="campoTecnologias" name="tecnologias[]" multiple size="10">
+            <optgroup label="Tecnologías Servidor">
+              <option value="php">PHP</option>
+              <option value="nodejs">Node.js</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="csharp">C#</option>
+            </optgroup>
+            <optgroup label="Tecnologías Cliente">
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="javascript">JavaScript</option>
+              <option value="angular">Angular</option>
+              <option value="react">React</option>
+              <option value="bootstrap">Bootstrap</option>
+              <option value="jquery">jQuery</option>
+            </optgroup>
+          </select>
+          <br id="brTecnologias" /><br />
 
           <label for="campoExperiencia">Años de experiencia:</label>
-          <input type="number" id="campoExperiencia" name="experiencia" min="0" step="1" placeholder="Ej: 3"> <br><br>
+          <input
+            type="number"
+            id="campoExperiencia"
+            name="experiencia"
+            min="0"
+            step="1"
+            placeholder="Ej: 3"
+          />
+          <br id="brExperiencia" /><br />
 
           <label for="campoCV">Añadir CV (Formato PDF):</label>
-          <input type="file" id="campoCV" name="cv" accept="application/pdf"><br><br>
+          <input type="file" id="campoCV" name="cv" accept="application/pdf" />
+          <span id="fileName" class="text-sm text-gray-500"></span>
+          <br id="brCv" /><br />
 
           <button id="botonGuardar" type="submit">Guardar</button>
         </form>
