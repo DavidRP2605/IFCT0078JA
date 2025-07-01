@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let inputExperiencia = document.getElementById("campoExperiencia");
   let inputCv = document.getElementById("campoCV");
   const botonGuardar = document.getElementById("botonGuardar");
-
-  let brNuevo = document.createElement("br");
+  let checkPolitica = document.getElementById("checkPolitica");
+  let checkCondiciones = document.getElementById("checkCondiciones");
+  let labelCondiciones = document.getElementById("labelCondiciones");
 
   //Hacemos que el boton guardar este deshabilitado por defecto
   botonGuardar.disabled = true;
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (br1) {
         br1.remove();
       }
+      return false;
     } else {
       // Eliminar el mensaje de error si es válido
       if (parrafoError) {
@@ -148,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
           inputNacimiento.nextSibling
         );
       }
+      return true;
     }
   }
 
@@ -221,8 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let parrafoError = document.getElementById("errorTecnologias");
     let br = document.getElementById("brTecnologias");
 
-    console.log(seleccionadas);
-
     if (seleccionadas.length === 0) {
       if (!parrafoError) {
         parrafoError = document.createElement("p");
@@ -283,8 +284,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   //Hacemos un addEventListener al campo experiencia para que valide al escribir
-  inputExperiencia.addEventListener("input", () => {
-    validarExperiencia();
+  inputExperiencia.addEventListener("input", validarExperiencia);
+
+  function validarCV() {
+    const inputCv = document.getElementById("campoCV");
+
+    const archivo = inputCv.files[0];
+
+    if (!archivo || archivo.type !== "application/pdf") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  function validarCheckboxes() {
+    let parrafoError = document.getElementById("errorCheckbox");
+    let br = document.getElementById("brCheckbox");
+
+    if (!checkPolitica.checked || !checkCondiciones.checked) {
+      if (!parrafoError) {
+        parrafoError = document.createElement("p");
+        parrafoError.id = "errorCheckbox";
+        parrafoError.textContent =
+          "Debes aceptar la política de privacidad y las condiciones de uso.";
+        parrafoError.style.color = "red";
+        br.classList.add("hidden");
+        labelCondiciones.parentNode.insertBefore(
+          parrafoError,
+          labelCondiciones.nextSibling
+        );
+      }
+      return false;
+    } else {
+      if (parrafoError) {
+        parrafoError.remove();
+        br.classList.add("visible");
+      }
+      return true;
+    }
+  }
+
+  checkPolitica.addEventListener("change", () => {
+    validarCheckboxes();
+  });
+
+  checkCondiciones.addEventListener("change", () => {
+    validarCheckboxes();
     validarFormularioCompleto();
   });
 
@@ -296,7 +342,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const esProvinciaValida = validarProvincia();
     const esTecnologiaValida = validarTecnologias();
     const esExperienciaValida = validarExperiencia();
-    const esCVValido = inputCv.value !== ""; // Simple: solo que haya algo cargado
+    const esCVValido = validarCV(); // Simple: solo que haya algo cargado
+    const esCheckboxesValido = validarCheckboxes();
 
     // Habilitar solo si todo es correcto
     const todoCorrecto =
@@ -305,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
       esFechaValida &&
       esEmailValido &&
       esProvinciaValida &&
+      esCheckboxesValido &&
       esTecnologiaValida &&
       esExperienciaValida &&
       esCVValido;
