@@ -8,19 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
   let inputGenero = document.querySelectorAll('input[name="genero"]');
   let inputTecnologia = document.getElementById("campoTecnologias");
   let inputExperiencia = document.getElementById("campoExperiencia");
-  let inputCv = document.getElementById("campoCV");
   const botonGuardar = document.getElementById("botonGuardar");
   let checkPolitica = document.getElementById("checkPolitica");
   let checkCondiciones = document.getElementById("checkCondiciones");
-  let labelCondiciones = document.getElementById("labelCondiciones");
 
   //Hacemos que el boton guardar este deshabilitado por defecto
   botonGuardar.disabled = true;
 
   //Creamos funcion para comprobar que el campo nombre no este vacio y tenga al menos 3 caracteres y lo añadimos en un parrafo que se añade debajo del campo nombre solo si no es correcto
   function validarNombre() {
+    let trNombre = document.getElementById("filaNombre");
     let parrafoError = document.getElementById("errorNombre");
-    let br = document.getElementById("brNombre");
+    let tdError = document.getElementById("tdNombre");
     //Guardamos el largo del nombre para comprobarlo
     const largoNombre = inputNombre.value.length;
     //Guardamos la variable por si el nombre está vacío
@@ -32,23 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
       !/^[a-zA-ZÀ-ÿ\s]+$/.test(inputNombre.value.trim())
     ) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorNombre";
+        tdError.id = "errorNombre";
         parrafoError.textContent = "El nombre introducido no es válido.";
         parrafoError.style.color = "red";
-        // br.remove();
-        br.classList.add("hidden");
-        inputNombre.parentNode.insertBefore(
-          parrafoError,
-          inputNombre.nextSibling
-        );
+        trNombre.appendChild(tdError);
+        tdError.appendChild(parrafoError);
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
-        // inputNombre.insertAdjacentElement("afterend", brNuevo);
       }
       return true;
     }
@@ -59,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //Creamos funcion para comprobar que el campo apellidos no este vacio y tenga al menos 3 caracteres y lo añadimos en un parrafo que se añade debajo del campo apellidos solo si no es correcto
   function validarApellidos() {
     let parrafoError = document.getElementById("errorApellidos");
-    let br = document.getElementById("brApellidos");
+    let trApellidos = document.getElementById("filaApellidos");
+    let tdError = document.getElementById("tdApellidos");
+
     //Guardamos el largo del nombre para comprobarlo
     const largoApellidos = inputApellidos.value.length;
     //Guardamos la variable por si el nombre está vacío
@@ -71,21 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
       !/^[a-zA-ZÀ-ÿ\s]+$/.test(inputApellidos.value.trim())
     ) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorApellidos";
+        tdError.id = "errorApellidos";
         parrafoError.textContent = "El apellido introducido no es válido.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        inputApellidos.parentNode.insertBefore(
-          parrafoError,
-          inputApellidos.nextSibling
-        );
+        trApellidos.appendChild(tdError);
+        tdError.appendChild(parrafoError);
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }
@@ -110,7 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function validarFechaNacimiento() {
     let parrafoError = document.getElementById("errorFecha");
-    let br1 = document.getElementById("brFecha1");
+    let trEdad = document.getElementById("filaEdad");
+    let tdError = document.getElementById("tdEdad");
 
     const dia = parseInt(inputNacimiento.value.split("-")[2]);
     const mes = parseInt(inputNacimiento.value.split("-")[1]);
@@ -120,35 +114,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!edad || edad < 18) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorFecha";
-        parrafoError.textContent = "Edad inválida";
+        tdError.id = "errorFecha";
+        parrafoError.textContent = "La edad no es válida.";
         parrafoError.style.color = "red";
-        inputNacimiento.parentNode.insertBefore(
-          parrafoError,
-          inputNacimiento.nextSibling
-        );
-      }
-
-      // Eliminar uno de los <br> cuando la edad es inválida
-      if (br1) {
-        br1.remove();
+        trEdad.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
-      // Eliminar el mensaje de error si es válido
       if (parrafoError) {
         parrafoError.remove();
-      }
-
-      // Volver a añadir el <br> cuando la edad es válida
-      if (!br1) {
-        const nuevoBr = document.createElement("br");
-        nuevoBr.id = "brFecha1";
-        inputNacimiento.parentNode.insertBefore(
-          nuevoBr,
-          inputNacimiento.nextSibling
-        );
       }
       return true;
     }
@@ -160,25 +137,24 @@ document.addEventListener("DOMContentLoaded", () => {
   //Creamos funcion para comprobar que el campo email no este vacio y tenga estructura de email y lo añadimos a la derecha del campo email solo si no es correcto
   function validarEmail() {
     let parrafoError = document.getElementById("errorEmail");
-    let br = document.getElementById("brEmail");
+    let trEmail = document.getElementById("filaEmail");
+    let tdError = document.getElementById("tdEmail");
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(inputEmail.value)) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorEmail";
+        tdError.id = "errorEmail";
         parrafoError.textContent = "El email no es válido.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        inputEmail.parentNode.insertBefore(
-          parrafoError,
-          inputEmail.nextSibling
-        );
+        trEmail.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }
@@ -190,25 +166,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function validarProvincia() {
     let provinciaVacia = inputProvincia.value;
     let parrafoError = document.getElementById("errorProvincia");
-    let br = document.getElementById("brProvincia");
+    let trProvincia = document.getElementById("filaProvincia");
+    let tdError = document.getElementById("tdProvincia");
 
     if (provinciaVacia === "selecciona") {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorProvincia";
+        tdError.id = "errorProvincia";
         parrafoError.textContent = "La provincia no es válida.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        inputProvincia.parentNode.insertBefore(
-          parrafoError,
-          inputProvincia.nextSibling
-        );
+        trProvincia.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }
@@ -222,25 +196,23 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     let parrafoError = document.getElementById("errorTecnologias");
-    let br = document.getElementById("brTecnologias");
+    let trTecnologias = document.getElementById("filaTecnologias");
+    let tdError = document.getElementById("tdTecnologias");
 
     if (seleccionadas.length === 0) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorTecnologias";
+        tdError.id = "errorTecnologias";
         parrafoError.textContent = "Debes seleccionar al menos 1 tecnología.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        inputTecnologia.parentNode.insertBefore(
-          parrafoError,
-          inputTecnologia.nextSibling
-        );
+        trTecnologias.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }
@@ -251,7 +223,9 @@ document.addEventListener("DOMContentLoaded", () => {
   //Creamos funcion para validar que el campo experiencia no esta vacío ni introduce número menores que 0 o mayores que 50
   function validarExperiencia() {
     let parrafoError = document.getElementById("errorExperiencia");
-    let br = document.getElementById("brExperiencia");
+    let trExperiencia = document.getElementById("filaExperiencia");
+    let tdError = document.getElementById("tdExperiencia");
+
     let valor = inputExperiencia.value;
 
     //Guardamos la variable por si la experiencia está vacía
@@ -264,21 +238,18 @@ document.addEventListener("DOMContentLoaded", () => {
       valor > 50
     ) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorExperiencia";
+        tdError.id = "errorExperiencia";
         parrafoError.textContent = "La experiencia no es válida.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        inputExperiencia.parentNode.insertBefore(
-          parrafoError,
-          inputExperiencia.nextSibling
-        );
+        trExperiencia.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }
@@ -288,38 +259,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function validarCV() {
     const inputCv = document.getElementById("campoCV");
+    let parrafoError = document.getElementById("errorCv");
+    let trCv = document.getElementById("filaCv");
+    let tdError = document.getElementById("tdCv");
 
     const archivo = inputCv.files[0];
 
     if (!archivo || archivo.type !== "application/pdf") {
+      if (!parrafoError) {
+        tdError = document.createElement("td");
+        parrafoError = document.createElement("p");
+        tdError.id = "errorCv";
+        parrafoError.textContent = "Debes subir algún archivo.";
+        parrafoError.style.color = "red";
+        trCv.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
+      }
       return false;
     } else {
+      if (parrafoError) {
+        parrafoError.remove();
+      }
       return true;
     }
   }
 
   function validarCheckboxes() {
     let parrafoError = document.getElementById("errorCheckbox");
-    let br = document.getElementById("brCheckbox");
+    let trCheckbox = document.getElementById("filaCheckbox");
+    let tdError = document.getElementById("tdCheckbox");
 
     if (!checkPolitica.checked || !checkCondiciones.checked) {
       if (!parrafoError) {
+        tdError = document.createElement("td");
         parrafoError = document.createElement("p");
-        parrafoError.id = "errorCheckbox";
+        tdError.id = "errorCheckbox";
         parrafoError.textContent =
           "Debes aceptar la política de privacidad y las condiciones de uso.";
         parrafoError.style.color = "red";
-        br.classList.add("hidden");
-        labelCondiciones.parentNode.insertBefore(
-          parrafoError,
-          labelCondiciones.nextSibling
-        );
+        trCheckbox.appendChild(tdError);
+        tdError.appendChild(parrafoError);        
       }
       return false;
     } else {
       if (parrafoError) {
         parrafoError.remove();
-        br.classList.add("visible");
       }
       return true;
     }

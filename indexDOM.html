@@ -44,133 +44,192 @@
           method="get"
           enctype="multipart/form-data"
         >
-          <label for="campoNombre">Nombre: </label>
-          <input
-            type="text"
-            id="campoNombre"
-            name="nombre"
-            placeholder="Escribe tu nombre"
-          /><br id="brNombre" /><br />
+          <table>
+            <tr id="filaNombre">
+              <td><label for="campoNombre">Nombre:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoNombre"
+                  name="nombre"
+                  placeholder="Escribe tu nombre"
+                />
+              </td>
+            </tr>
 
-          <label for="campoApellidos">Apellidos: </label>
-          <input
-            type="text"
-            id="campoApellidos"
-            name="apellidos"
-            placeholder="Escribe tus apellidos"
-          /><br id="brApellidos" /><br />
+            <tr id="filaApellidos">
+              <td><label for="campoApellidos">Apellidos:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoApellidos"
+                  name="apellidos"
+                  placeholder="Escribe tus apellidos"
+                />
+              </td>
+            </tr>
 
-          <label for="campoFecha">Fecha de nacimiento: </label>
-          <input type="date" id="campoFecha" name="fecha" />
-          <br id="brFecha1" />
-          <br />
+            <tr id="filaEdad">
+              <td><label for="campoFecha">Fecha de nacimiento:</label></td>
+              <td><input type="date" id="campoFecha" name="fecha" /></td>
+            </tr>
 
-          <label for="campoEmail">Correo electrónico</label>
-          <input
-            type="text"
-            id="campoEmail"
-            name="email"
-            placeholder="Escribe tu correo electrónico"
-          /><br id="brEmail" /><br />
+            <tr id="filaEmail">
+              <td><label for="campoEmail">Correo electrónico:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoEmail"
+                  name="email"
+                  placeholder="Escribe tu correo electrónico"
+                />
+              </td>
+            </tr>
 
-          <label for="campoProvincia">Provincia: </label>
-          <select name="provincia" id="campoProvincia">
-            <option value="selecciona">Selecciona una opcion</option>
-            <option value="almeria">Almería</option>
-            <option value="cadiz">Cádiz</option>
-            <option value="cordoba">Córdoba</option>
-            <option value="granada">Granada</option>
-            <option value="huelva">Huelva</option>
-            <option value="jaen">Jaén</option>
-            <option value="malaga">Málaga</option>
-            <option value="sevilla">Sevilla</option></select
-          ><br id="brProvincia" /><br />
+            <tr id="filaProvincia">
+              <td><label for="campoProvincia">Provincia:</label></td>
+              <td>
+                <select name="provincia" id="campoProvincia">
+                  <option value="selecciona">Selecciona una opcion</option>
+                  <option value="almeria">Almería</option>
+                  <option value="cadiz">Cádiz</option>
+                  <option value="cordoba">Córdoba</option>
+                  <option value="granada">Granada</option>
+                  <option value="huelva">Huelva</option>
+                  <option value="jaen">Jaén</option>
+                  <option value="malaga">Málaga</option>
+                  <option value="sevilla">Sevilla</option>
+                </select>
+              </td>
+            </tr>
 
-          <label for="campoGenero"
-            >Género:
-            <input
-              type="radio"
-              id="generoHombre"
-              name="genero"
-              value="hombre"
-              checked
-            />
-            Hombre
-            <input type="radio" id="generoMujer" name="genero" value="mujer" />
-            Mujer
-            <input type="radio" id="generoOtros" name="genero" value="otros" />
-            Otros
-            <input
-              type="radio"
-              id="generoNC"
-              name="genero"
-              value="noContestar"
-            />
-            Prefiero no contestar
-          </label>
-          <br id="brGenero" /><br />
+            <tr id="filaGenero">
+              <td><label for="campoGenero">Género:</label></td>
+              <td>
+                <input
+                  type="radio"
+                  id="generoHombre"
+                  name="genero"
+                  value="hombre"
+                  checked
+                />
+                Hombre
+                <input
+                  type="radio"
+                  id="generoMujer"
+                  name="genero"
+                  value="mujer"
+                />
+                Mujer
+                <input
+                  type="radio"
+                  id="generoOtros"
+                  name="genero"
+                  value="otros"
+                />
+                Otros
+                <input
+                  type="radio"
+                  id="generoNC"
+                  name="genero"
+                  value="noContestar"
+                />
+                Prefiero no contestar
+              </td>
+            </tr>
 
-          <label for="campoTecnologias">Selecciona tecnologías:</label><br />
-          <select id="campoTecnologias" name="tecnologias[]" multiple size="10">
-            <optgroup label="Tecnologías Servidor">
-              <option value="php">PHP</option>
-              <option value="nodejs">Node.js</option>
-              <option value="python">Python</option>
-              <option value="java">Java</option>
-              <option value="csharp">C#</option>
-            </optgroup>
-            <optgroup label="Tecnologías Cliente">
-              <option value="html">HTML</option>
-              <option value="css">CSS</option>
-              <option value="javascript">JavaScript</option>
-              <option value="angular">Angular</option>
-              <option value="react">React</option>
-              <option value="bootstrap">Bootstrap</option>
-              <option value="jquery">jQuery</option>
-            </optgroup>
-          </select>
-          <br id="brTecnologias" /><br />
+            <tr id="filaTecnologias">
+              <td>
+                <label for="campoTecnologias">Selecciona tecnologías:</label>
+              </td>
+              <td>
+                <select
+                  id="campoTecnologias"
+                  name="tecnologias[]"
+                  multiple
+                  size="10"
+                >
+                  <optgroup label="Tecnologías Servidor">
+                    <option value="php">PHP</option>
+                    <option value="nodejs">Node.js</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="csharp">C#</option>
+                  </optgroup>
+                  <optgroup label="Tecnologías Cliente">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                    <option value="bootstrap">Bootstrap</option>
+                    <option value="jquery">jQuery</option>
+                  </optgroup>
+                </select>
+              </td>
+            </tr>
 
-          <label for="campoExperiencia">Años de experiencia:</label>
-          <input
-            type="number"
-            id="campoExperiencia"
-            name="experiencia"
-            min="0"
-            step="1"
-            placeholder="Ej: 3"
-          />
-          <br id="brExperiencia" /><br />
+            <tr id="filaExperiencia">
+              <td>
+                <label for="campoExperiencia">Años de experiencia:</label>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="campoExperiencia"
+                  name="experiencia"
+                  min="0"
+                  step="1"
+                  placeholder="Ej: 3"
+                />
+              </td>
+            </tr>
 
-          <label for="campoCV">Añadir CV (Formato PDF):</label>
-          <input type="file" id="campoCV" name="cv" accept="application/pdf" />
-          <br id="brCv" /><br />
+            <tr id="filaCv">
+              <td><label for="campoCV">Añadir CV (Formato PDF):</label></td>
+              <td>
+                <input
+                  type="file"
+                  id="campoCV"
+                  name="cv"
+                  accept="application/pdf"
+                />
+              </td>
+            </tr>
 
-          <div>
-            <input type="checkbox" id="checkPolitica" name="politica" />
-            <label for="checkPolitica">
-              <a
-                href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal"
-                target="_blank"
-                rel="noopener noreferrer"
-                >He leído y acepto la Política de Privacidad</a
-              ></label
-            ><br />
+            <tr id="filaCheckbox">
+              <td colspan="2">
+                <input type="checkbox" id="checkPolitica" name="politica" />
+                <label for="checkPolitica">
+                  <a
+                    href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >He leído y acepto la Política de Privacidad</a
+                  > </label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="checkCondiciones"
+                  name="condiciones"
+                />
+                <label for="checkCondiciones" id="labelCondiciones">
+                  <a
+                    href="https://es.wikipedia.org/wiki/T%C3%A9rminos_y_condiciones_de_uso"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Acepto las Condiciones de Uso</a
+                  >
+                </label>
+              </td>
+            </tr>
 
-            <input type="checkbox" id="checkCondiciones" name="condiciones" />
-            <label for="checkCondiciones" id="labelCondiciones"
-              ><a
-                href="https://es.wikipedia.org/wiki/T%C3%A9rminos_y_condiciones_de_uso"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Acepto las Condiciones de Uso</a
-              ></label
-            >
-            <br />
-          </div>
-          <br id="brCheckbox" />
-
-          <button id="botonGuardar" type="submit">Guardar</button>
+            <tr>
+              <td colspan="2">
+                <button id="botonGuardar" type="submit">Guardar</button>
+              </td>
+            </tr>
+          </table>
         </form>
       </section>
     </main>
