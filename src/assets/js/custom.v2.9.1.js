@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let parrafoError = document.getElementById("errorProvincia");
     let tdProvincia = document.getElementById("tdProvincia");
 
-    if (provinciaVacia === "selecciona") {
+    if (provinciaVacia === "") {
       if (!parrafoError) {
         parrafoError = document.createElement("p");
         parrafoError.id = "errorProvincia";
@@ -240,8 +240,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let tdCv = document.getElementById("tdCv");
 
     const archivo = inputCv.files[0];
+    const nombreArchivo = archivo.name.toLowerCase();
 
-    if (!archivo || archivo.type !== "application/pdf") {
+    if (
+      !archivo ||
+      archivo.type !== "application/pdf" ||
+      !nombreArchivo.endsWith(".pdf")
+    ) {
       if (!parrafoError) {
         tdError = document.createElement("td");
         parrafoError = document.createElement("p");
