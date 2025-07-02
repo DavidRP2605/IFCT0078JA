@@ -38,14 +38,14 @@
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form
-          id="elFormulario"
-          action="#"
-          method="get"
-          enctype="multipart/form-data"
-        >
-          <table>
-            <tr id="filaNombre">
+        <table>
+          <form
+            id="elFormulario"
+            action="#"
+            method="get"
+            enctype="multipart/form-data"
+          >
+            <tr>
               <td><label for="campoNombre">Nombre:</label></td>
               <td>
                 <input
@@ -55,9 +55,10 @@
                   placeholder="Escribe tu nombre"
                 />
               </td>
+              <td id="tdNombre"></td>
             </tr>
 
-            <tr id="filaApellidos">
+            <tr>
               <td><label for="campoApellidos">Apellidos:</label></td>
               <td>
                 <input
@@ -67,14 +68,16 @@
                   placeholder="Escribe tus apellidos"
                 />
               </td>
+              <td id="tdApellidos"></td>
             </tr>
 
-            <tr id="filaEdad">
+            <tr>
               <td><label for="campoFecha">Fecha de nacimiento:</label></td>
               <td><input type="date" id="campoFecha" name="fecha" /></td>
+              <td id="tdEdad"></td>
             </tr>
 
-            <tr id="filaEmail">
+            <tr>
               <td><label for="campoEmail">Correo electrónico:</label></td>
               <td>
                 <input
@@ -84,9 +87,10 @@
                   placeholder="Escribe tu correo electrónico"
                 />
               </td>
+              <td id="tdEmail"></td>
             </tr>
 
-            <tr id="filaProvincia">
+            <tr>
               <td><label for="campoProvincia">Provincia:</label></td>
               <td>
                 <select name="provincia" id="campoProvincia">
@@ -101,9 +105,10 @@
                   <option value="sevilla">Sevilla</option>
                 </select>
               </td>
+              <td id="tdProvincia"></td>
             </tr>
 
-            <tr id="filaGenero">
+            <tr>
               <td><label for="campoGenero">Género:</label></td>
               <td>
                 <input
@@ -136,9 +141,10 @@
                 />
                 Prefiero no contestar
               </td>
+              <td id="tdGenero"></td>
             </tr>
 
-            <tr id="filaTecnologias">
+            <tr>
               <td>
                 <label for="campoTecnologias">Selecciona tecnologías:</label>
               </td>
@@ -167,9 +173,10 @@
                   </optgroup>
                 </select>
               </td>
+              <td id="tdTecnologias"></td>
             </tr>
 
-            <tr id="filaExperiencia">
+            <tr>
               <td>
                 <label for="campoExperiencia">Años de experiencia:</label>
               </td>
@@ -183,9 +190,10 @@
                   placeholder="Ej: 3"
                 />
               </td>
+              <td id="tdExperiencia"></td>
             </tr>
 
-            <tr id="filaCv">
+            <tr>
               <td><label for="campoCV">Añadir CV (Formato PDF):</label></td>
               <td>
                 <input
@@ -195,9 +203,10 @@
                   accept="application/pdf"
                 />
               </td>
+              <td id="tdCv"></td>
             </tr>
 
-            <tr id="filaCheckbox">
+            <tr>
               <td colspan="2">
                 <input type="checkbox" id="checkPolitica" name="politica" />
                 <label for="checkPolitica">
@@ -222,6 +231,7 @@
                   >
                 </label>
               </td>
+              <td id="tdCheckbox"></td>
             </tr>
 
             <tr>
@@ -229,8 +239,8 @@
                 <button id="botonGuardar" type="submit">Guardar</button>
               </td>
             </tr>
-          </table>
-        </form>
+          </form>
+        </table>
       </section>
     </main>
 
