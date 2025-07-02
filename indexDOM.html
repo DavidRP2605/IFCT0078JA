@@ -38,22 +38,208 @@
       </section>
       <section id="seccionFormulario">
         <h2>La sección del Formulario</h2>
-        <form id="elFormulario" action="#" method="get">
-          <!-- <input type="text" id="campoInput" placeholder="Escribe algo..." /> -->
-          <label for="campoNombre">Nombre</label>
-          <input type="text" id="campoNombre" name="nombre" />
-          <label for="campoEmail">Email</label>
-          <input type="text" id="campoEmail" name="email" />
-          <label for="campoFecha">Fecha de nacimiento</label>
-          <div id="campoFecha">
-            <select name="dia" id="diaNacimiento"></select>
-            <select name="mes" id="mesNacimiento">
-              <option value="1">Enero</option>
-            </select>
-            <select name="anio" id="anioNacimiento"></select>
-          </div>
-          <p id="mensajeInput"></p>
-          <button id="botonGuardar" type="submit">Guardar</button>
+        <form
+          id="elFormulario"
+          action="#"
+          method="get"
+          enctype="multipart/form-data"
+        >
+          <table>
+            <tr>
+              <td><label for="campoNombre">Nombre:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoNombre"
+                  name="nombre"
+                  placeholder="Escribe tu nombre"
+                />
+              </td>
+              <td id="tdNombre"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoApellidos">Apellidos:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoApellidos"
+                  name="apellidos"
+                  placeholder="Escribe tus apellidos"
+                />
+              </td>
+              <td id="tdApellidos"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoFecha">Fecha de nacimiento:</label></td>
+              <td><input type="date" id="campoFecha" name="fecha" /></td>
+              <td id="tdEdad"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoEmail">Correo electrónico:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="campoEmail"
+                  name="email"
+                  placeholder="Escribe tu correo electrónico"
+                />
+              </td>
+              <td id="tdEmail"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoProvincia">Provincia:</label></td>
+              <td>
+                <select name="provincia" id="campoProvincia">
+                  <option value="">Selecciona una opcion</option>
+                  <option value="almeria">Almería</option>
+                  <option value="cadiz">Cádiz</option>
+                  <option value="cordoba">Córdoba</option>
+                  <option value="granada">Granada</option>
+                  <option value="huelva">Huelva</option>
+                  <option value="jaen">Jaén</option>
+                  <option value="malaga">Málaga</option>
+                  <option value="sevilla">Sevilla</option>
+                </select>
+              </td>
+              <td id="tdProvincia"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoGenero">Género:</label></td>
+              <td>
+                <input
+                  type="radio"
+                  id="generoHombre"
+                  name="genero"
+                  value="hombre"
+                  checked
+                />
+                Hombre
+                <input
+                  type="radio"
+                  id="generoMujer"
+                  name="genero"
+                  value="mujer"
+                />
+                Mujer
+                <input
+                  type="radio"
+                  id="generoOtros"
+                  name="genero"
+                  value="otros"
+                />
+                Otros
+                <input
+                  type="radio"
+                  id="generoNC"
+                  name="genero"
+                  value="noContestar"
+                />
+                Prefiero no contestar
+              </td>
+              <td id="tdGenero"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <label for="campoTecnologias">Selecciona tecnologías:</label>
+              </td>
+              <td>
+                <select
+                  id="campoTecnologias"
+                  name="tecnologias[]"
+                  multiple
+                  size="10"
+                >
+                  <optgroup label="Tecnologías Servidor">
+                    <option value="php">PHP</option>
+                    <option value="nodejs">Node.js</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="csharp">C#</option>
+                  </optgroup>
+                  <optgroup label="Tecnologías Cliente">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                    <option value="bootstrap">Bootstrap</option>
+                    <option value="jquery">jQuery</option>
+                  </optgroup>
+                </select>
+              </td>
+              <td id="tdTecnologias"></td>
+            </tr>
+
+            <tr>
+              <td>
+                <label for="campoExperiencia">Años de experiencia:</label>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="campoExperiencia"
+                  name="experiencia"
+                  min="0"
+                  step="1"
+                  placeholder="Ej: 3"
+                />
+              </td>
+              <td id="tdExperiencia"></td>
+            </tr>
+
+            <tr>
+              <td><label for="campoCV">Añadir CV (Formato PDF):</label></td>
+              <td>
+                <input
+                  type="file"
+                  id="campoCV"
+                  name="cv"
+                  accept="application/pdf"
+                />
+              </td>
+              <td id="tdCv"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <input type="checkbox" id="checkPolitica" name="politica" />
+                <label for="checkPolitica">
+                  <a
+                    href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >He leído y acepto la Política de Privacidad</a
+                  > </label
+                ><br />
+                <input
+                  type="checkbox"
+                  id="checkCondiciones"
+                  name="condiciones"
+                />
+                <label for="checkCondiciones" id="labelCondiciones">
+                  <a
+                    href="https://es.wikipedia.org/wiki/T%C3%A9rminos_y_condiciones_de_uso"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Acepto las Condiciones de Uso</a
+                  >
+                </label>
+              </td>
+              <td id="tdCheckbox"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+                <button id="botonGuardar" type="submit">Guardar</button>
+              </td>
+            </tr>
+          </table>
         </form>
       </section>
     </main>
@@ -66,8 +252,9 @@
     <script src="./src/assets/js/custom.v2.6.0.js"></script>
     <script src="./src/assets/js/custom.v2.7.0.js"></script>
     <script src="./src/assets/js/custom.v2.8.0.js"></script>
-    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
     <script src="./src/assets/js/custom.v2.9.0.js"></script>
+    <script src="./src/assets/js/custom.v2.4.0.js"></script> -->
+    <script src="./src/assets/js/custom.v2.9.1.js"></script>
     <!-- Enlaza tu archivo JavaScript -->
   </body>
 </html>
