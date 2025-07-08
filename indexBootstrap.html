@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios DOM</title>
+    <link href="./src/assets/styles/custom.v2.0.css" rel="stylesheet" />
+    <!-- BEGIN :: 3erParty CSS Styles -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Manipulando el DOM</h1>
+    </header>
+
+    <main>
+      <section id="seccionParrafos">
+        <h2>La sección de los párrafos</h2>
+        <p id="parrafoPrincipal">Este es un párrafo de ejemplo.</p>
+        <p id="parrafoSecundario">El contador va por:</p>
+      </section>
+      <section id="seccionBotones">
+        <h2>La sección de los botones</h2>
+        <button id="botonCambiarTexto">Cambiar Texto del Párrafo</button>
+        <button id="botonAgregarElemento">Agregar Elemento a Lista</button>
+        <button id="botonCambiarEstilo">Cambiar Estilo</button>
+      </section>
+      <section id="seccionListas">
+        <h2>La sección de las listas</h2>
+        <ul id="miLista">
+          <li>Elemento inicial 1</li>
+          <li>Elemento inicial 2</li>
+        </ul>
+      </section>
+      <section id="seccionImagenes">
+        <h2>La sección de las imágenes</h2>
+        <div id="contenedorImagen">
+          <!-- Aquí se agregará una imagen -->
+        </div>
+      </section>
+      <section id="seccionFormulario">
+        <h2>La sección del Formulario</h2>
+        <form id="elFormulario" action="#" class="needs-validation" novalidate>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-md-4">
+                <label for="campoNombre" class="form-label">Nombre:</label>
+                <input
+                  type="text"
+                  id="campoNombre"
+                  name="nombre"
+                  placeholder="Escribe tu nombre"
+                  class="form-control"
+                  required
+                  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+                  minlength="3"
+                  maxlength="50"
+                />
+                <div class="valid-feedback">Nombre válido.</div>
+                <div class="invalid-feedback">Nombre no es válido.</div>
+              </div>
+
+              <div class="col">
+                <label for="campoApellidos" class="form-label"
+                  >Apellidos:</label
+                >
+                <input
+                  type="text"
+                  id="campoApellidos"
+                  name="apellidos"
+                  placeholder="Escribe tus apellidos"
+                  class="form-control"
+                  required
+                  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+                  minlength="3"
+                  maxlength="70"
+                />
+                <div class="valid-feedback">Apellido válido.</div>
+                <div class="invalid-feedback">Apellido no es válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="campoEmail" class="form-label"
+                  >Correo electrónico:</label
+                >
+                <input
+                  type="email"
+                  id="campoEmail"
+                  name="email"
+                  placeholder="Escribe tu correo electrónico"
+                  class="form-control"
+                  required
+                />
+                <div class="valid-feedback">Email válido.</div>
+                <div class="invalid-feedback">Email no es válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="campoFecha" class="form-label"
+                  >Fecha de nacimiento:</label
+                >
+                <input
+                  type="date"
+                  id="campoFecha"
+                  name="fecha"
+                  class="form-control"
+                  required
+                />
+                <div class="valid-feedback">Fecha válida.</div>
+                <div class="invalid-feedback">Fecha no es válida.</div>
+              </div>
+              <div class="col">
+                <label for="campoProvincia" class="form-label"
+                  >Provincia:</label
+                >
+                <input
+                  class="form-control"
+                  list="datalistOptions"
+                  id="campoProvincia"
+                  placeholder="Escribe para buscar..."
+                  required
+                />
+                <datalist id="datalistOptions">
+                  <option>Almería</option>
+                  <option>Cádiz</option>
+                  <option>Córdoba</option>
+                  <option>Granada</option>
+                  <option>Huelva</option>
+                  <option>Jaén</option>
+                  <option>Málaga</option>
+                  <option>Sevilla</option>
+                </datalist>
+                <div class="valid-feedback">Provincia válida.</div>
+                <div class="invalid-feedback">Provincia no es válida.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col form-check form-check-inline">
+                <label for="campoGenero" class="form-label">Género:</label>
+              </div>
+              <div class="col form-check form-check-inline">
+                <input
+                  type="radio"
+                  id="generoHombre"
+                  name="genero"
+                  value="hombre"
+                  class="form-check-input"
+                  checked
+                />
+                Hombre
+              </div>
+              <div class="col form-check form-check-inline">
+                <input
+                  type="radio"
+                  id="generoMujer"
+                  name="genero"
+                  value="mujer"
+                  class="form-check-input"
+                />
+                Mujer
+              </div>
+              <div class="col form-check form-check-inline">
+                <input
+                  type="radio"
+                  id="generoOtros"
+                  name="genero"
+                  value="otros"
+                  class="form-check-input"
+                />
+                Otros
+              </div>
+              <div class="col form-check form-check-inline">
+                <input
+                  type="radio"
+                  id="generoNC"
+                  name="genero"
+                  value="noContestar"
+                  class="form-check-input"
+                />
+                Prefiero no contestar
+              </div>
+              <div class="valid-feedback">Género válido.</div>
+              <div class="invalid-feedback">Género no es válido.</div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="campoTecnologias" class="form-label"
+                  >Selecciona tecnologías:</label
+                >
+                <select
+                  id="campoTecnologias"
+                  name="tecnologias[]"
+                  multiple
+                  size="10"
+                  class="form-select"
+                  multiple
+                  aria-label="multiple select example "
+                  required
+                >
+                  <optgroup label="Tecnologías Servidor">
+                    <option value="php">PHP</option>
+                    <option value="nodejs">Node.js</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="csharp">C#</option>
+                  </optgroup>
+                  <optgroup label="Tecnologías Cliente">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                    <option value="bootstrap">Bootstrap</option>
+                    <option value="jquery">jQuery</option>
+                  </optgroup>
+                </select>
+                <div class="valid-feedback">Campo válido.</div>
+                <div class="invalid-feedback">Este campo no es válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="campoExperiencia" class="form-label"
+                  >Años de experiencia:</label
+                >
+                <input
+                  type="number"
+                  id="campoExperiencia"
+                  name="experiencia"
+                  min="0"
+                  max="50"
+                  step="1"
+                  placeholder="Ej: 3"
+                  class="form-control"
+                  required
+                />
+                <div class="valid-feedback">Experiencia válida.</div>
+                <div class="invalid-feedback">Experiencia no es válida.</div>
+              </div>
+              <div class="col">
+                <label for="campoCV" class="form-label"
+                  >Añadir CV (Formato PDF):</label
+                >
+                <input
+                  type="file"
+                  id="campoCV"
+                  name="cv"
+                  accept="application/pdf"
+                  class="form-control"
+                  required
+                  pattern=".*\.pdf$"
+                />
+                <div class="valid-feedback">CV válido.</div>
+                <div class="invalid-feedback">CV no es válido.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col form-check">
+                <input
+                  type="checkbox"
+                  id="checkPolitica"
+                  name="politica"
+                  value=""
+                  class="form-check-input"
+                  required
+                />
+                <label for="checkPolitica" class="form-check-label">
+                  <a
+                    href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >He leído y acepto la Política de Privacidad</a
+                  >
+                </label>
+                <div class="valid-feedback">
+                  Politica y condiciones válidas.
+                </div>
+                <div class="invalid-feedback">Debe marcar ambas opciones.</div>
+              </div>
+              <div class="col form-check">
+                <input
+                  type="checkbox"
+                  id="checkCondiciones"
+                  name="condiciones"
+                  value=""
+                  class="form-check-input"
+                  required
+                />
+                <label for="checkCondiciones" class="form-check-label">
+                  <a
+                    href="https://es.wikipedia.org/wiki/T%C3%A9rminos_y_condiciones_de_uso"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Acepto las Condiciones de Uso</a
+                  >
+                </label>
+                <div class="valid-feedback">
+                  Politica y condiciones válidas.
+                </div>
+                <div class="invalid-feedback">Debe marcar ambas opciones.</div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-12">
+                <button id="botonGuardar" class="btn btn-primary" type="submit">
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- <script src="./src/assets/js/custom.v2.1.0.js"></script> 
+    <script src="./src/assets/js/custom.v2.2.0.js"></script> 
+    <script src="./src/assets/js/custom.v2.2.1.js"></script>
+    <script src="./src/assets/js/custom.v2.3.0.js"></script>
+    <script src="./src/assets/js/custom.v2.5.0.js"></script>
+    <script src="./src/assets/js/custom.v2.6.0.js"></script>
+    <script src="./src/assets/js/custom.v2.7.0.js"></script>
+    <script src="./src/assets/js/custom.v2.8.0.js"></script>
+    <script src="./src/assets/js/custom.v2.9.0.js"></script>
+    <script src="./src/assets/js/custom.v2.4.0.js"></script> 
+    <script src="./src/assets/js/custom.v2.9.1.js"></script> -->
+    <script src="./src/assets/js/custom.v3.0.0.js"></script>
+    <!-- Enlaza tu archivo JavaScript -->
+
+    <!-- BEGIN :: 3erParty -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/c4fb6b9658.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- END :: 3erParty -->
+    <!-- END :: JS -->
+  </body>
+</html>
