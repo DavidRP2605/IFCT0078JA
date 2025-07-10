@@ -3,9 +3,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 // Requiere Composer y PHPMailer
 require 'vendor/autoload.php';
-define('MAIL_INFO_TARGET', 'receptor@ejemplo.com'); // Cambiar al correo de destino
-real
-header('Content-Type: application/json');
+define('MAIL_INFO_TARGET', 'cuentaiacurso@gmail.com'); // Cambiar al correo de destino
+
+header(header: 'Content-Type: application/json');
 // Verificar método
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 echo json_encode(['result' => false, 'message' => 'Método no permitido']);
@@ -16,13 +16,13 @@ $nombre = trim($_POST['nombre'] ?? '');
 $correo = trim($_POST['correo'] ?? '');
 $asunto = trim($_POST['asunto'] ?? '');
 $mensaje = trim($_POST['mensaje'] ?? '');
-$archivo = $_FILES['documentacion'] ?? null;
+// $archivo = $_FILES['documentacion'] ?? null;
 if (
-$nombre === '' || $correo === '' || $asunto === '' || $mensaje === '' ||
-!filter_var($correo, FILTER_VALIDATE_EMAIL) ||
-!$archivo || $archivo['error'] !== UPLOAD_ERR_OK ||
-mime_content_type($archivo['tmp_name']) !== 'application/pdf' ||
-strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION)) !== 'pdf'
+$nombre === '' || $correo === '' || $asunto === '' || $mensaje === '' || 
+!filter_var($correo, FILTER_VALIDATE_EMAIL) //||
+// !$archivo || $archivo['error'] !== UPLOAD_ERR_OK ||
+// mime_content_type($archivo['tmp_name']) !== 'application/pdf' ||
+// strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION)) !== 'pdf'
 ) {
 echo json_encode([
 'result' => false,
@@ -43,7 +43,7 @@ $mail->Body =
 "Nombre: $nombre\n" .
 "Correo: $correo\n\n" .
 "Mensaje:\n$mensaje";
-$mail->addAttachment($archivo['tmp_name'], $archivo['name']);
+// $mail->addAttachment($archivo['tmp_name'], $archivo['name']);
 $mail->send();
 echo json_encode(['result' => true, 'message' => 'Mensaje recibido con éxito']);
 } catch (Exception $e) {
