@@ -44,7 +44,7 @@
         <!-- Formulario -->
         <div class="col-md-6">
           <form
-            id="formulario"
+            id="elFormulario"
             method="post"
             enctype="multipart/form-data"
             action="#"
@@ -101,10 +101,10 @@
             </div>
 
             <div>
-              <label for="message" class="form-label">Mensaje</label>
+              <label for="mensaje" class="form-label">Mensaje</label>
               <textarea
                 type="text"
-                id="message"
+                id="mensaje"
                 class="form-control"
                 name="mensaje"
                 rows="5"
@@ -117,7 +117,13 @@
               <div class="invalid-feedback">Mensaje no es válido.</div>
             </div>
 
-            <button id="btnSubmit" type="submit" class="btn btn-dark fw-bold">
+            <div class="row">
+              <div class="col-xs-12">
+                <p id="feedback-message" class="d-none"></p>
+              </div>
+            </div>
+
+            <button id="btnSubmit" type="submit" class="btn btn-dark fw-bold"m aria-label="Enviar mensaje">
               Enviar mensaje
             </button>
           </form>
@@ -267,7 +273,12 @@
         </div>
       </div>
     </footer>
-    <script src="assets/js/custom.v3.0.1.js"></script>
+    <!-- BEGIN :: JS -->
+
+    <!-- BEGIN :: 3erParty -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
@@ -277,7 +288,16 @@
       src="https://kit.fontawesome.com/c4fb6b9658.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- END :: 3erParty -->
+
+    <!-- BEGIN :: Own -->
+    <!-- <script type="module" src="./src/assets/js/plugin.v1.0.js" defer></script> -->
+    <script type="module" src="assets/js/custom.v3.0.1.js" defer></script>
+
+    <!-- END :: Own -->
+
     <!-- END :: JS -->
   </body>
 </html>
